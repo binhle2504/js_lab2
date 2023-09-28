@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <textarea id="inputText" rows="5" cols="30"></textarea>
+        <button onclick="convertVariables()">Keets Quar</button>
+    </div>
+    <div id="results"></div>
+    <script>
+        function underscoreToCamelCase(underscore) {
+            const words = underscore.split('_');
+            const camelCase = words.map((word, index) => {
+                if (index !== 0) {
+                    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                }
+                return word.toLowerCase();
+            }).join('');
+
+            return camelCase;
+        }
+
+        function convertVariables() {
+            const inputText = document.getElementById('inputText').value;
+            const variableList = inputText.split('\n');
+
+            variableList.forEach(variable => {
+                const camelCase = underscoreToCamelCase(variable);
+                const resultElement = document.createElement('p');
+                resultElement.textContent = `${camelCase}`;//.repeat(camelCase.length)
+                document.getElementById('results').appendChild(resultElement);
+            });
+        }
+
+    </script>
+</body>
+
+</html>

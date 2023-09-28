@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // data ve sukien
+        const events = [
+            [5, 'Goal'],
+            [20, 'Substitution'],
+            [34, 'Yellow Card'],
+            [50, 'Goal'],
+            [64, 'Red Card'],
+            [70, 'Substitution'],
+            [85, 'Goal'],
+        ];
+
+        // 1: 
+        const uniqueEvents = [...new Set(events.map(event => event[1]))];
+
+        // 2: 
+        const filteredEvents = events.filter(event => !(event[0] === 64 && event[1] === 'Yellow Card'));
+
+        // 3:
+        const totalEvents = filteredEvents.length;
+        const averageFrequency = Math.round(90 / totalEvents);
+        console.log(`${totalEvents} sự kiện xảy ra, trung bình mỗi ${averageFrequency} phút`);
+
+        //4:
+        filteredEvents.forEach(event => {
+            const half = event[0] <= 45 ? 'FIRST HALF' : 'SECOND HALF';
+            console.log(`[${half}] ${event[0]}: ${event[1]}`);
+        });
+
+    </script>
+</body>
+
+</html>
